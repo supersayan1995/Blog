@@ -1,0 +1,91 @@
+<div ng-controller="View2Ctrl"  style="background-image: url(https://s-media-cache-ak0.pinimg.com/originals/de/76/60/de7660350fe77a6ba60957c33fe95d3b.jpg); background-repeat: no-repeat; height: 1150px;">
+	
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span> 
+	      </button>
+	      <h2>Talking is always positive. That's why I talk too much.</h2>
+	      <h4>Louis C. K.</h4>
+	      <a href="#!/view2" class="navbar-brand" style="color: black;">Welcome People! Feel free to talk!</a>
+	      &nbsp&nbsp&nbsp&nbsp
+	    </div>
+	    <div class="collapse navbar-collapse" id="myNavbar">
+	      <ul class="nav navbar-nav">
+        	<li><a href="#!/view2">Home</a></li>
+        	<li><a href="#!/view2">News</a></li> 
+        	<li><a href="#!/view2">Community</a></li> 
+      	  </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="#!/view2">&nbsp&nbsp About the Author</a></li>
+	        <li class="dropdown">
+		        <a class="dropdown-toggle" data-toggle="dropdown" href="#!/view2"><i class="fa fw fa-user"></i>&nbsp&nbsp Account
+		        <span class="caret"></span></a>
+		        <ul class="dropdown-menu">
+		          <li><a href="#!/view2">Update</a></li>
+		          <li><a href="#">Sign Out</a></li>
+		        </ul>
+		    </li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+
+	<div class="container-fluid">
+		<img src="images/students.jpg" style="position: relative; left: -15px; top: -20px; width: 110%; height: 120%;">
+	</div>
+
+	<div class="container" style="position: relative; top: -20px; background-color: black;"><br>
+        <h1 style="color: #888; font-weight: bold; text-align: center;">Add New Thread</h1>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <form>
+                    <div class="row">
+                    <div class="col-md-10 col-md-offset-2" style="padding: 10px;">
+                        <span style="font-size: 30px; color: #0209e8;">Name &nbsp&nbsp</span>
+                        <input type="text" class="add" placeholder="Enter your username" style="max-width: 50%;" ng-model="inputText.titleInput">
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-10" style="padding: 10px;">
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style="font-size: 30px; color: #0209e8;">Age &nbsp&nbsp</span>
+                        <input type="text" class="add" placeholder="Enter your age" style="max-width: 50%;" ng-model="inputText.urlInput">
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-10 col-md-offset-1" style="padding: 10px;">
+                        <span style="font-size: 30px; color: #0209e8;">Message &nbsp&nbsp</span>
+                        <textarea class="add" placeholder="Describe your thoughts" rows="8" style="height: auto; max-width: 50%; vertical-align: top;" ng-model="inputText.messageInput"></textarea>
+                    </div>
+                    </div><br>
+                    <button type="submit" class="btn btn-success center-block" ng-click="add()">Add</button>
+                    <div ng-if="flag1" class="text-danger text-center"><br>* Please fill all the above fields</div>
+                </form>
+            </div>
+        </div>
+        <br><br>
+    </div>
+
+    <div class="container-fluid" style="background-color: black; position: relative; top: -20px;"><br>
+    	<h1 style="color: #0209e8; font-weight: bold; text-align: center;">Blog Posts</h1><br>
+    <div class="container" ng-repeat="blog in blogArray">
+    	<div class="row" style="border: 2px solid #888; color: black; padding: 30px; margin-bottom: 50px; background-color: white; border-radius: 20px;">
+    		<div class="col-md-3">
+    			<img ng-src="{{blog.url}}" class="thumbnail" height="250px" width="250px">
+    		</div>
+    		<div class="col-md-9">
+    			<span style="font-size: 35px;">{{blog.title}}</span>
+    			<span class="pull-right"><h4> Uploaded On: {{ date | date:'HH:mm:ss'}} &nbsp&nbsp&nbsp {{ date | date:'dd-MM-yyyy'}}</h4></span>
+    			<p>{{blog.message}}</p>
+    			<button class="btn btn-success" ng-click="likeFun($index,blog)"><i class="fa fa-fw fa-thumbs-up" style="color: white;"></i> Like</button>&nbsp {{blog.likes}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    			<button class="btn btn-success" ng-click="dislikeFun($index,blog)"><i class="fa fa-fw fa-thumbs-down" style="color: white;"></i> Dislike</button>&nbsp {{blog.dislikes}}
+    			<button class="btn btn-danger pull-right" ng-click="remove($index)"><i class="fa fa-fw fa-trash" style="color: white;"></i> Delete</button>
+    		</div>
+    	</div>
+    </div>
+    </div>
+
+</div>
